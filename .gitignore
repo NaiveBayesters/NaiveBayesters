@@ -1,0 +1,11 @@
+venv
+*.pyc
+staticfiles
+.DS_Store
+.direnv
+.envrc
+__pycache__
+secrets.py
+db.sqlite3
+/classifier/migrations
+.env
