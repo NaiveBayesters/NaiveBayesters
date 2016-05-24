@@ -10,3 +10,4 @@ settings.py
 db.sqlite3
 /classifier/migrations
 .env
+settings.py
