@@ -1,0 +1,14 @@
+{% block content %}
+<div class="container">
+  <div class="register_form row">
+    <h1>Create an account</h1>
+    <form id="user_form" class="user_form" method="post" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" name="submit" value="Register" />
+    </form>
+    <br /><p class="message">Already registered? <a href="{% url 'login' %}">Sign In</a></p>
+    <br /><p class="message"><a href="{% url 'home' %}">Back to home </a></p>
+  </div>
+</div>
+{% endblock %}
