@@ -2,21 +2,39 @@ from django.shortcuts import HttpResponse, render, get_object_or_404, HttpRespon
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.core.context_processors import csrf
+from django.contrib.auth.models import User
 from .models import Classifier
+from .machine_learning import get_training_data, what_is_the_text
+from .forms import ClassifierForm
+
 
 # Create your views here.
 
 def loggedin(request):
-    return render_to_response('registration/loggedin.html', {'username': request.user.username})
+    userid = request.user.id
+    return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
+    # return render(request, 'profile.html', {'username': request.user.username})
 
 def home(request):
     return render(request, 'home.html')
 
-def profile(request):
-    return render(request, 'profile.html', {'username': request.user.username})
+def profile(request, id):
+    owner = User.objects.get(id=id)
+    classifier = Classifier.objects.all().filter(owner=owner)
+    return render(request, 'profile.html', {'username': request.user.username, 'classifier': classifier})
 
 def train(request):
-    return render(request, 'create.html')
+    if request.method == 'POST':
+        form = ClassifierForm(request.POST)
+        if form.is_valid():
+            classifier = form.save(commit=False)
+            classifier.owner = request.user
+            classifier.save()
+            return HttpResponseRedirect('/classifier/home/')
+    else:
+        form = ClassifierForm()
+
+    return render(request, 'create.html', {'form': form})
 
 def classifier_detail_view(request, id):
     classifier = get_object_or_404(Classifier, pk=id)
@@ -27,7 +45,8 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/accounts/register/complete')
+            userid = request.user.id
+            return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
 
     else:
         form = UserCreationForm()

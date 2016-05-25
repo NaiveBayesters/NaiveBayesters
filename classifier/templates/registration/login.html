@@ -2,7 +2,7 @@
 {% block title %}Log In{% endblock %}
 {% block content %}
 
-<form method="post" action="{% url 'classifier:login' %}">
+<form method="post" action="">
 {% csrf_token %}
 {% if form.errors %}
 <p>Your Username or Password were not entered correctly. Please try again.</p>

@@ -4,17 +4,18 @@
   <head>
     <meta charset="utf-8">
     <title>Profile</title>
+    <div align="right">
+      <a href="/accounts/logout">logout</a>
+    </div>
   </head>
   <body>
     <h2>{{username}}'s profile</h2>
     <ul>
-      <div align="left">
-      Created Classifiers:
-    </div>
-    </br>
-        <li><a href="http://www.google.com">English</a></li>
-        <li><a href="http://www.google.com">Spanish</a></li>
-        <li><a href="http://www.google.com">Spanglish</a></li>
+      {% for item in classifier %}
+        {{item.name}}: {{item.category}}<br>
+      {% endfor %}
     </ul>
+
+
   </body>
 </html>
