@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^profile/(?P<id>[0-9]+)/', views.profile, name="profile_page"),
     url(r'^train/', views.train, name="training_page"),
     url(r'^classifier/(?P<id>[0-9]+)/', views.classifier_detail_view, name="classifier_detail"),
+    url(r'^prediction/', views.prediction, name='prediction'),
      # Auth-related URLs:
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),

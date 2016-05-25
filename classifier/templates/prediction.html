@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prediction</title>
+  </head>
+  <body>
+    <h2>Predict a body of text</h2>
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      Text:<textarea name="test" rows="8" cols="40"></textarea><br>
+      <input type="submit" name="submit" value="Predict">
+    </form>
+    {% if testing %}
+      <h2>last tested:</h2> {{test}}<br>
+      <h2>results:</h2> {{testing}}
+    {% endif %}
+  </body>
+</html>
+{% endif %}
+{% endblock content %}

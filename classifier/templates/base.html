@@ -13,6 +13,7 @@
 &nbsp;&nbsp; | &nbsp;&nbsp;  user: <b>{{request.user.username}}</b>
 &nbsp;&nbsp; | &nbsp;&nbsp;  <a href="{% url 'classifier:profile_page' user.id %}">Profile</a>
 &nbsp;&nbsp; | &nbsp;&nbsp;  <a href="{% url 'classifier:training_page' %}">New</a>
+&nbsp;&nbsp; | &nbsp;&nbsp;  <a href="{% url 'classifier:prediction' %}">Prediction</a>
 &nbsp;&nbsp; | &nbsp;&nbsp;  <a href="/accounts/logout">Logout</a>
 {% else %}
 &nbsp;&nbsp; | &nbsp;&nbsp;  Not logged in.
