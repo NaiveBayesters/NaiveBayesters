@@ -5,6 +5,7 @@ urlpatterns = [
     # Examples:
     # url(r'^$', 'naivebayesters.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^classifier/', include('classifier.urls')),
+    url(r'^accounts/', include('classifier.urls')),
 ]
