@@ -45,8 +45,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            userid = request.user.id
-            return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
+            return HttpResponseRedirect('/accounts/register/complete')
 
     else:
         form = UserCreationForm()
@@ -57,4 +56,4 @@ def register(request):
     return render_to_response('registration/registration_form.html', token)
 
 def registration_complete(request):
-    return render_to_response('registration/registration_complete.html')
+    return render(request, 'registration/registration_complete.html')

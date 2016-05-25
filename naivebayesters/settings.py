@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
+from .secrets import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
- 
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -27,7 +28,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 #     }
 # }
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -104,9 +105,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-DATABASES = {
-    'default': {}
-}
+# DATABASES = {
+#     'default': {}
+# }
 
 
 # Update database configuration with $DATABASE_URL.
