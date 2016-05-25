@@ -15,9 +15,11 @@
     <h2>{{username}}'s profile</h2>
     <h3>Created Classifiers</h3>
       <ul>
-        {% for item in classifier %}
-          {{item.name}}: {{item.category}}<br>
-        {% endfor %}
+        {% if classifier %}
+          {% for item in classifier %}
+            {{item.name}}: {{item.category}}<br>
+          {% endfor %}
+        {% endif %}
       </ul>
 
   </body>

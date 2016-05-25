@@ -11,9 +11,7 @@ from .forms import ClassifierForm
 # Create your views here.
 
 def loggedin(request):
-    userid = request.user.id
-    return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
-    # return render(request, 'profile.html', {'username': request.user.username})
+    return render(request, 'registration/loggedin.html', {'username': request.user.username})
 
 def home(request):
     return render(request, 'home.html')
@@ -29,9 +27,8 @@ def train(request):
         if form.is_valid():
             classifier = form.save(commit=False)
             classifier.owner = request.user
-            userid = request.user.id
             classifier.save()
-            return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
+            return HttpResponseRedirect('/classifier/home/')
     else:
         form = ClassifierForm()
 
@@ -56,12 +53,10 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            userid = request.user.id
-            return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
+            return HttpResponseRedirect('/accounts/register/complete')
 
     else:
         form = UserCreationForm()
-        
     token = {}
     token.update(csrf(request))
     token['form'] = form

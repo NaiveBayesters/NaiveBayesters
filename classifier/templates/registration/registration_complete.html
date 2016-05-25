@@ -3,7 +3,6 @@
 {% block content %}
 
 <h2>Thank you for registering.</h2>
-{% if request.user.is_authenticated %}
-<p><a href="{% url 'classifier:profile_page' user.id %}"/accounts/login/"">Profile</a></p>
-{% endif %}
+<p><a href="/accounts/login/">Please Log In</a></p>
+
 {% endblock %}
