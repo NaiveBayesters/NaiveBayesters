@@ -13,7 +13,7 @@ def home(request):
     return render(request, 'home.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'profile.html', {'username': request.user.username})
 
 def train(request):
     return render(request, 'create.html')

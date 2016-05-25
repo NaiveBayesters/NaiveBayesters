@@ -2,8 +2,7 @@
 {% block title %}Logged In{% endblock %}
 {% block content %}
 
-  <h1>Welcome {{username}}</h1>
-  <p>Thank you for logging in.</p>
+  <p>Thank you for logging in, {{username}}. Please click <a href="/classifier/profile/">here</a> to go to your profile page.</p>
   <p><a href="/accounts/logout"/>Logout</p>
 
 {% endblock %}
