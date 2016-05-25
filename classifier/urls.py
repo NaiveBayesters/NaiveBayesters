@@ -6,7 +6,7 @@ app_name = "classifier"
 
 urlpatterns = [
     url(r'^home/', views.home, name="home_page"),
-    url(r'^profile/', views.profile, name="profile_page"),
+    url(r'^profile/(?P<id>[0-9]+)/', views.profile, name="profile_page"),
     url(r'^train/', views.train, name="training_page"),
     url(r'^classifier/(?P<id>[0-9]+)/', views.classifier_detail_view, name="classifier_detail"),
      # Auth-related URLs:
