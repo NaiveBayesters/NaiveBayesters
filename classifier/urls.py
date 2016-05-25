@@ -5,19 +5,15 @@ from . import views
 app_name = "classifier"
 
 urlpatterns = [
-    url(r'^home/', views.register, name="home_page"),
+    url(r'^home/', views.home, name="home_page"),
     url(r'^profile/', views.profile, name="profile_page"),
     url(r'^train/', views.train, name="training_page"),
     url(r'^classifier/(?P<id>[0-9]+)/', views.classifier_detail_view, name="classifier_detail"),
-
-
-    # """below for reference"""
-    # url(r'^$', views.index, name='index'),
-    # url(r'^movie(?P<id>[0-9]+)/add_rating/', views.add_rating, name="rate_movie"),
-    # url(r'^movie(?P<id>[0-9]+)/', views.movie_detail_view, name="movie_detail_url"),
-    # url(r'^user(?P<id>[0-9]+)/', views.rater_detail, name="rater_detail"),
-    # url(r'^top(?P<num>[0-9]+)/', views.Top_Movies.as_view(), name="top_movies"),
-    # url(r'^genre/(?P<genre>[A-Za-z]+)/', views.top_genre, name="top_genre"),
-    # url(r'^profile/', views.profile, name="profile"),
-    # url(r'^', include('django.contrib.auth.urls'))
+     # Auth-related URLs:
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^loggedin/$', 'classifier.views.loggedin', name='loggedin'),
+    # Registration URLs
+    url(r'^register/$', 'classifier.views.register', name='register'),
+    url(r'^register/complete/$', 'classifier.views.registration_complete', name='registration_complete'),
     ]
