@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.context_processors import csrf
 from django.contrib.auth.models import User
 from .models import Classifier
-from .machine_learning import get_training_data, what_is_the_text
+from .machine_learning import get_training_data
 from .forms import ClassifierForm
 
 
@@ -37,6 +37,16 @@ def train(request):
 
     return render(request, 'create.html', {'form': form})
 
+def prediction(request):
+    if request.method == 'POST':
+        context = {}
+        context['test'] = request.POST['test']
+        context['testing'] = get_training_data(context['test'])
+        return render(request,'prediction.html', context)
+    else:
+        return render(request,'prediction.html')
+
+
 def classifier_detail_view(request, id):
     classifier = get_object_or_404(Classifier, pk=id)
     return render(request, 'classifier/detail.html', {'classifier': classifier})
@@ -59,4 +69,4 @@ def register(request):
     return render_to_response('registration/registration_form.html', token)
 
 def registration_complete(request):
-    return render_to_response('registration/registration_complete.html')
+    return render(request, 'registration/registration_complete.html')
