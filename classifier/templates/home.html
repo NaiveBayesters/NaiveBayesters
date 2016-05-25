@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
 <!-- This is the template for the homepage which include register and login, wired to /home/ url -->
 <!DOCTYPE html>
 <html>
@@ -7,12 +10,13 @@
   </head>
   <body>
     <header>
-    Login/Register page
-    <div align="right">
-    <a href="/accounts/login">login</a>
-    <!-- <a href="/accounts/logout">logout</a> -->
+    Not a user?<br>
+    <!-- <div align="right"> -->
+    <!-- <a href="/accounts/login">login</a>
+    <a href="/accounts/logout">logout</a> -->
     <a href="/accounts/register">register</a>
   </div>
     </header>
   </body>
 </html>
+{% endblock content %}
