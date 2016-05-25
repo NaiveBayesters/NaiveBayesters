@@ -29,9 +29,8 @@ def train(request):
         if form.is_valid():
             classifier = form.save(commit=False)
             classifier.owner = request.user
-            userid = request.user.id
             classifier.save()
-            return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
+            return HttpResponseRedirect('/classifier/home/')
     else:
         form = ClassifierForm()
 
@@ -46,12 +45,10 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            userid = request.user.id
-            return HttpResponseRedirect('/classifier/profile/{}'.format(userid))
+            return HttpResponseRedirect('/accounts/register/complete')
 
     else:
         form = UserCreationForm()
-        
     token = {}
     token.update(csrf(request))
     token['form'] = form
@@ -59,4 +56,4 @@ def register(request):
     return render_to_response('registration/registration_form.html', token)
 
 def registration_complete(request):
-    return render_to_response('registration/registration_complete.html')
+    return render(request, 'registration/registration_complete.html')
