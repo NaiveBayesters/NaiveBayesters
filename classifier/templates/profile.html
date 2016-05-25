@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
 <!-- This is the template for profile and listing all created classifiers, wired to /profile/ url -->
 <!DOCTYPE html>
 <html>
@@ -10,13 +13,14 @@
   </head>
   <body>
     <h2>{{username}}'s profile</h2>
-    <ul>
-      {% for item in classifier %}
-        {{item.name}}: {{item.category}}<br>
-      {% endfor %}
-    </ul>
-
-
+    <h3>Created Classifiers</h3>
+      <ul>
+        {% for item in classifier %}
+          {{item.name}}: {{item.category}}<br>
+        {% endfor %}
+      </ul>
 
   </body>
 </html>
+
+{% endblock content %}
