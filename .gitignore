@@ -6,6 +6,7 @@ staticfiles
 .envrc
 __pycache__
 secrets.py
+settings.py
 db.sqlite3
 /classifier/migrations
 .env

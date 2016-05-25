@@ -1,0 +1,19 @@
+<!-- This is the template for profile and listing all created classifiers, wired to /profile/ url -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+  <body>
+    <h2>{{username}}'s profile</h2>
+    <ul>
+      {% for item in classifier %}
+        {{item.name}}: {{item.category}}<br>
+      {% endfor %}
+    </ul>
+
+    
+
+  </body>
+</html>

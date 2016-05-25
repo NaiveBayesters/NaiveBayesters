@@ -26,4 +26,4 @@ def what_is_the_text():
     # some input from an html page is the test data
     train = get_training_data()
 
-    return pipe.predict(?on the html data somehow?)
+    return pipe.predict("")

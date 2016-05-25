@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Logged In{% endblock %}
+{% block content %}
+
+  <p>Thank you for logging in, {{username}}. Please click <a href="{% url 'classifier:profile_page' user.id %}">here</a> to go to your profile page.</p>
+  <p><a href="/accounts/logout"/>Logout<br>
+  {{User.id}}
+  </p>
+
+{% endblock %}
