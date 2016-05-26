@@ -8,6 +8,5 @@ __pycache__
 secrets.py
 settings.py
 db.sqlite3
-/classifier/migrations
 .env
 settings.py
